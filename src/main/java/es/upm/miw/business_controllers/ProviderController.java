@@ -25,6 +25,10 @@ public class ProviderController {
         return new ProviderDto(this.providerRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Provider id(" + id + ")")));
     }
+    
+    public boolean isPresent(String id) {
+    	return this.read(id) != null;
+    }
 
     public List<ProviderMinimunDto> readAll() {
         return this.providerRepository.findAllProviders();
